@@ -252,7 +252,8 @@ f.addEventListener('submit', function(ev){
     .then(function(){
       setGuest(name); updateChatLock();
       if (coming !== 'не смогу') {
-        var note = '[+] придёт на новоселье' + (+plus > 0 ? ' (+' + plus + ')' : '') + '!';
+        var pn = +plus, pw = (pn % 10 === 1 && pn % 100 !== 11) ? 'человек' : ((pn % 10 >= 2 && pn % 10 <= 4 && (pn % 100 < 10 || pn % 100 >= 20)) ? 'человека' : 'человек');
+        var note = '[+] придёт на новоселье' + (pn > 0 ? ', +' + pn + ' ' + pw + ' с ним' : '') + '!';
         var nb = new URLSearchParams(); nb.append('action', 'chat'); nb.append('name', name); nb.append('text', note);
         addLocal(name, note);
         postNote(nb, name, 0);
