@@ -33,6 +33,7 @@ body{min-height:100vh;font:15px/1.35 Tahoma,'Trebuchet MS',Verdana,sans-serif;co
 .tv-info>div{border:4px solid #141414;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
 .tv-where{flex:1 1 220px;background:#ffe600;text-transform:uppercase}.tv-reply{flex:1 1 150px;background:#141414;color:#fff}
 .tv-lab{font-size:13px;letter-spacing:2px;font-weight:700}.tv-where .tv-lab{color:#d4001c;font-family:'Russo One',sans-serif}.tv-reply .tv-lab{color:#ffe600}
+.tv-where .tv-val{font-size:clamp(11px,calc((100vw - 96px)/18.6),20px)}
 .tv-val{font-size:clamp(15px,4.3vw,20px);font-weight:700;overflow-wrap:anywhere}
 .tv-tag{text-align:center;font-family:'Marck Script',cursive;font-size:clamp(22px,6.5vw,30px);color:#d4001c;transform:rotate(-2deg)}
 
@@ -122,7 +123,7 @@ input:disabled{background:#f1efe2;color:#777}
 <div class="tv-row"><span class="tm ru">17:00</span><span><b>«Слышь, Башка?»</b> — викторина на <s>ютубе</s> ВК Видео, приз — поножовщина для двух победителей</span></div>
 <div class="tv-row"><span class="tm ru">18:00</span><span><b>«Переговоры на корточках»</b> — чемпионат, судит Бог</span></div>
 <div class="tv-row"><span class="tm ru">19:00</span><span><b>«Mortal Kombat»</b> — турнир на приставке, потом фотосессия у подъезда</span></div>
-<div class="tv-row"><span class="tm ru">20:00</span><span><b>«Свободное время»</b> — чай на кухне, гитара во дворе и разговоры «за жизнь»</span></div>
+<div class="tv-row"><span class="tm ru">20:00</span><span><b>«Свободное время»</b> — до утра за жили-были</span></div>
 </div>
 <div class="tv-info">
 <div class="tv-where"><span class="tv-lab">ГДЕ СМОТРЕТЬ</span><span class="tv-val" data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</span><span style="font-size:15px">Форма одежды: парадная.</span></div>
@@ -133,12 +134,12 @@ input:disabled{background:#f1efe2;color:#777}
 
 <!-- ===== АНКЕТА (окно XP) ===== -->
 <main class="win" id="anketa" aria-labelledby="at">
-<div class="title"><span class="t" id="at"><span class="mq">Приглашение на новоселье — анкета гостя ★ 22 ноября 2006 ★ 15:00 (или 16:00) ★ ЛЮБЛИНСКАЯ 74К1 ★ ждём всех!</span></span><span class="ctl"><button type="button" data-act="min" aria-label="Свернуть"><svg viewBox="0 0 12 12"><rect x="2" y="8" width="7" height="2.2" fill="#fff"/></svg></button><button type="button" data-act="max" aria-label="Развернуть"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.4"/><rect x="2" y="2" width="8" height="3" fill="#fff"/></svg></button><button type="button" data-act="close" class="x" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div>
+<div class="title"><span class="t" id="at"><span class="mq">Приглашение на новоселье — анкета гостя ★ 22 ноября 2006 ★ 15:00 ★ ЛЮБЛИНСКАЯ 74К1 ★ ждём всех!</span></span><span class="ctl"><button type="button" data-act="min" aria-label="Свернуть"><svg viewBox="0 0 12 12"><rect x="2" y="8" width="7" height="2.2" fill="#fff"/></svg></button><button type="button" data-act="max" aria-label="Развернуть"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.4"/><rect x="2" y="2" width="8" height="3" fill="#fff"/></svg></button><button type="button" data-act="close" class="x" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div>
 <div class="menu" aria-hidden="true"><span>Файл</span><span>Правка</span><span>Вид</span><span>Справка</span></div>
 <div class="body">
 <div class="hello">
 <svg aria-hidden="true" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="22" fill="#2a6be8" stroke="#fff" stroke-width="3"/><text x="24" y="33" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Tahoma,Verdana,sans-serif">?</text></svg>
-<div><b>Вы приглашены на новоселье!</b><br>22 ноября 2006 года, в 15:00 (или в 16:00, как получится).<br>Адрес: <b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></div>
+<div><b>Вы приглашены на новоселье!</b><br>22 ноября 2006 года, в 15:00.<br>Адрес: <b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></div>
 </div>
 <form id="f" novalidate>
 <div class="hp" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -149,7 +150,6 @@ input:disabled{background:#f1efe2;color:#777}
 <fieldset><legend>Придёте на новоселье?</legend>
 <label class="opt"><input type="radio" name="coming" value="да">да</label>
 <label class="opt"><input type="radio" name="coming" value="конечно да">конечно да</label>
-<label class="opt"><input type="radio" name="coming" value="да, но в 16:00">да, но в 16:00</label>
 <label class="opt dis"><input type="radio" name="coming" value="не смогу" disabled>не смогу (неуважительные причины не принимаются)</label>
 <label class="row" for="plus">Сколько человек с вами (кроме вас):</label>
 <input id="plus" name="plus" type="number" min="0" max="5" value="0" inputmode="numeric" style="max-width:110px">
@@ -196,7 +196,7 @@ input:disabled{background:#f1efe2;color:#777}
 <rect x="18" y="366" width="14" height="7" fill="#e8b312"/>
 </svg></div></div>
 <h2>НОВОСЕЛЬЕ</h2>
-<p>22 ноября 2006 года в 15:00 (или в 16:00).<br>Приходи — будет весело. Или не будет.<br><b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></p>
+<p>22 ноября 2006 года в 15:00.<br>Приходи — будет весело. Или не будет.<br><b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></p>
 </section>
 
 </div>
@@ -222,7 +222,7 @@ function $(id){ return document.getElementById(id); }
 function getGuest(){ try { return localStorage.getItem(KEY) || ''; } catch(e){ return ''; } }
 function setGuest(n){ try { localStorage.setItem(KEY, n); } catch(e){} }
 document.querySelectorAll('[data-cfg="address"]').forEach(function(e){ e.textContent = '';
-  CONFIG.address.split(', ').forEach(function(part, i, a){ var sp = document.createElement('span'); sp.style.whiteSpace = 'nowrap'; sp.textContent = part + (i < a.length - 1 ? ',' : ''); if (i) e.appendChild(document.createTextNode(' ')); e.appendChild(sp); });
+  CONFIG.address.split(', ').forEach(function(part, i, a){ var sp = document.createElement('span'); sp.style.whiteSpace = 'nowrap'; sp.textContent = part + (i < a.length - 1 ? ',' : ''); if (i) { if (i === 2 && e.classList.contains('tv-val')) e.appendChild(document.createElement('br')); else e.appendChild(document.createTextNode(' ')); } e.appendChild(sp); });
 });
 
 /* ---- диалоги ---- */
