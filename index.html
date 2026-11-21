@@ -17,7 +17,7 @@ body{min-height:100vh;font:15px/1.35 Tahoma,'Trebuchet MS',Verdana,sans-serif;co
 .tv{background:#f6efd6;border:4px solid #141414;box-shadow:6px 8px 0 rgba(0,0,0,.28);padding:clamp(10px,3vw,20px);display:flex;flex-direction:column;gap:10px;color:#141414;font-family:Arial,'Trebuchet MS',sans-serif}
 .tv-h{display:flex;border:4px solid #141414;background:#d4001c}
 .tv-h1{flex:1;min-width:0;padding:8px 12px}
-.tv-title{font-size:clamp(24px,8.2vw,44px);line-height:1;color:#fff;letter-spacing:1px;overflow-wrap:anywhere}
+.tv-title{font-size:clamp(22px,7.4vw,40px);line-height:1.05;color:#fff;letter-spacing:1px;overflow-wrap:anywhere}
 .tv-date{font-size:clamp(11px,3vw,15px);font-weight:700;color:#ffe600;letter-spacing:2px;margin-top:6px}
 .tv-age{width:clamp(64px,18vw,92px);background:#ffe600;border-left:4px solid #141414;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .tv-age b{font-size:clamp(22px,7vw,34px);line-height:1}.tv-age span{font-size:12px;font-weight:700;margin-top:2px}
@@ -31,7 +31,7 @@ body{min-height:100vh;font:15px/1.35 Tahoma,'Trebuchet MS',Verdana,sans-serif;co
 .tv-row .tm{font-size:clamp(14px,4vw,17px);min-width:52px;color:#d4001c;flex:none}
 .tv-info{display:flex;gap:10px;flex-wrap:wrap}
 .tv-info>div{border:4px solid #141414;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
-.tv-where{flex:1 1 220px;background:#ffe600}.tv-reply{flex:1 1 150px;background:#141414;color:#fff}
+.tv-where{flex:1 1 220px;background:#ffe600;text-transform:uppercase}.tv-reply{flex:1 1 150px;background:#141414;color:#fff}
 .tv-lab{font-size:13px;letter-spacing:2px;font-weight:700}.tv-where .tv-lab{color:#d4001c;font-family:'Russo One',sans-serif}.tv-reply .tv-lab{color:#ffe600}
 .tv-val{font-size:clamp(16px,4.6vw,20px);font-weight:700;overflow-wrap:anywhere}
 .tv-tag{text-align:center;font-family:'Marck Script',cursive;font-size:clamp(22px,6.5vw,30px);color:#d4001c;transform:rotate(-2deg)}
@@ -40,7 +40,7 @@ body{min-height:100vh;font:15px/1.35 Tahoma,'Trebuchet MS',Verdana,sans-serif;co
 .win{border:3px solid #0a3fb3;border-radius:9px 9px 0 0;background:#ece9d8;box-shadow:6px 8px 0 rgba(0,0,0,.28);overflow:hidden}
 .title{height:32px;background:linear-gradient(180deg,#3d95ff 0%,#0a5bdc 45%,#0a4fc8 100%);display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 10px;color:#fff;font-weight:700;font-size:14px;gap:8px}
 .title .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ctl{display:flex;gap:3px;flex:none}.ctl i{width:22px;height:22px;background:#2a6be8;border:1px solid #fff;border-radius:3px;display:block}.ctl i:last-child{background:#e2461f}
+.ctl{display:flex;gap:3px;flex:none}.ctl button{width:26px;height:24px;padding:0;border:1px solid #fff;border-radius:3px;background:linear-gradient(180deg,#5a9bff,#2a6be8);display:flex;align-items:center;justify-content:center;cursor:pointer}.ctl button.x{background:linear-gradient(180deg,#f08a6a,#d63e16)}.ctl svg{width:13px;height:13px;display:block}.win.min .body,.win.min .status{display:none}
 .menu{display:flex;gap:14px;padding:3px 10px;border-bottom:1px solid #aca899;font-size:13px}
 .body{padding:12px}
 .hello{display:flex;gap:12px;align-items:center;background:#fff;border:2px inset #9a9a9a;padding:10px 12px;margin-bottom:10px}
@@ -81,9 +81,15 @@ input:disabled{background:#f1efe2;color:#777}
 
 /* ---------- панель задач ---------- */
 .task{position:fixed;left:0;right:0;bottom:0;height:34px;z-index:5;background:linear-gradient(180deg,#2a6be8,#1a4fc0);display:flex;align-items:center;justify-content:space-between}
-.start{height:34px;padding:0 22px 0 16px;background:linear-gradient(180deg,#4cc22b,#2a8a14);border-radius:0 16px 16px 0;color:#fff;font-size:18px;font-weight:700;font-style:italic;display:flex;align-items:center}
+.start{border:0;cursor:pointer;font-family:inherit;height:34px;padding:0 22px 0 16px;background:linear-gradient(180deg,#4cc22b,#2a8a14);border-radius:0 16px 16px 0;color:#fff;font-size:18px;font-weight:700;font-style:italic;display:flex;align-items:center}
 .clock{padding:0 14px;color:#fff;font-size:14px}
 
+#fw{position:fixed;inset:0;width:100%;height:100%;z-index:20;pointer-events:none;display:none}
+.hint{position:fixed;left:50%;bottom:46px;transform:translateX(-50%);z-index:6;pointer-events:none;display:flex;flex-direction:column;align-items:center;font-family:'Marck Script',cursive;font-size:26px;color:#d4001c;background:#fff7b8;border:3px solid #141414;border-radius:16px;padding:4px 16px 2px;box-shadow:4px 5px 0 rgba(0,0,0,.3);animation:bob 1.1s ease-in-out infinite;transition:opacity .35s}
+.hint.off{opacity:0}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+@media (prefers-reduced-motion:reduce){.hint{animation:none}}
+.log .sys{color:#0b6b0b;background:#e8ffe8;padding:2px 4px;border-left:3px solid #2fa32f}
 /* ---------- диалог ---------- */
 .ov{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;padding:14px}
 .ov.on{display:flex}
@@ -100,17 +106,17 @@ input:disabled{background:#f1efe2;color:#777}
 
 <!-- ===== ТЕЛЕПРОГРАММА ===== -->
 <section class="tv" aria-label="Телепрограмма вечера">
-<div class="tv-h"><div class="tv-h1"><div class="tv-title ru">ТЕЛЕПРОГРАММА</div><div class="tv-date">22 НОЯБРЯ 2006 · ОДИН ВЕЧЕР · ОДИН КАНАЛ</div></div><div class="tv-age"><b class="ru">16+</b><span>ё маё</span></div></div>
+<div class="tv-h"><div class="tv-h1"><div class="tv-title ru">ТЕЛЕ<br>ПРОГРАММА</div><div class="tv-date">22 НОЯБРЯ 2006 · ОДИН ВЕЧЕР · ОДИН КАНАЛ</div></div><div class="tv-age"><b class="ru">16+</b><span>ё маё</span></div></div>
 <div class="tv-prem"><small>ПРЕМЬЕРА СЕЗОНА</small><div class="big ru">НОВОСЕЛЬЕ!</div><p>Эфир в <b>15:00</b> (ну или в 16:00 — как получится). Все гости приглашены, повтора не будет.</p></div>
 <div class="tv-list">
 <div class="tv-row"><span class="tm ru">15:00</span><span><b>«Заселение»</b> — торжественный вход, разуваемся, шлёпки с носками</span></div>
 <div class="tv-row"><span class="tm ru">16:00</span><span><b>«Прописка пройдена»</b> — знакомство с хатой и погоняла для всех</span></div>
-<div class="tv-row"><span class="tm ru">17:00</span><span><b>«Слышь, Башка?»</b> — викторина по цитатам, приз: золотые семки</span></div>
-<div class="tv-row"><span class="tm ru">18:00</span><span><b>«Переговоры на корточках»</b> — чемпионат, судит бабушка</span></div>
+<div class="tv-row"><span class="tm ru">17:00</span><span><b>«Слышь, Башка?»</b> — викторина на <s>ютубе</s> ВК Видео, приз — поножовщина для двух победителей</span></div>
+<div class="tv-row"><span class="tm ru">18:00</span><span><b>«Переговоры на корточках»</b> — чемпионат, судит Бог</span></div>
 <div class="tv-row"><span class="tm ru">19:00</span><span><b>«Mortal Kombat»</b> — турнир на приставке, потом фотосессия у подъезда</span></div>
 </div>
 <div class="tv-info">
-<div class="tv-where"><span class="tv-lab">ГДЕ СМОТРЕТЬ</span><span class="tv-val" data-cfg="address">[АДРЕС НОВОЙ ХАТЫ]</span><span style="font-size:15px">Форма одежды: спортивки. С собой: семки.</span></div>
+<div class="tv-where"><span class="tv-lab">ГДЕ СМОТРЕТЬ</span><span class="tv-val" data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</span><span style="font-size:15px">Форма одежды: парадная.</span></div>
 <div class="tv-reply"><span class="tv-lab">ОТВЕТ ДО ЭФИРА</span><span class="tv-val">заполните анкету ниже</span></div>
 </div>
 <div class="tv-tag">Не переключайтесь — будет весело!!!</div>
@@ -118,12 +124,12 @@ input:disabled{background:#f1efe2;color:#777}
 
 <!-- ===== АНКЕТА (окно XP) ===== -->
 <main class="win" id="anketa" aria-labelledby="at">
-<div class="title"><span class="t" id="at">Приглашение на новоселье — анкета гостя</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+<div class="title"><span class="t" id="at">Приглашение на новоселье — анкета гостя</span><span class="ctl"><button type="button" data-act="min" aria-label="Свернуть"><svg viewBox="0 0 12 12"><rect x="2" y="8" width="7" height="2.2" fill="#fff"/></svg></button><button type="button" data-act="max" aria-label="Развернуть"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.4"/><rect x="2" y="2" width="8" height="3" fill="#fff"/></svg></button><button type="button" data-act="close" class="x" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div>
 <div class="menu" aria-hidden="true"><span>Файл</span><span>Правка</span><span>Вид</span><span>Справка</span></div>
 <div class="body">
 <div class="hello">
 <svg aria-hidden="true" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="22" fill="#2a6be8" stroke="#fff" stroke-width="3"/><text x="24" y="33" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Tahoma,Verdana,sans-serif">?</text></svg>
-<div><b>Вы приглашены на новоселье!</b><br>22 ноября 2006 года, в 15:00 (или в 16:00, как получится).<br>Адрес: <b data-cfg="address">[АДРЕС НОВОЙ ХАТЫ]</b></div>
+<div><b>Вы приглашены на новоселье!</b><br>22 ноября 2006 года, в 15:00 (или в 16:00, как получится).<br>Адрес: <b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></div>
 </div>
 <form id="f" novalidate>
 <div class="hp" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -142,12 +148,11 @@ input:disabled{background:#f1efe2;color:#777}
 <div class="btns"><button class="btn def" id="send" type="submit">Отправить</button><button class="btn" type="reset">Отмена</button></div>
 </form>
 </div>
-<div class="status"><span id="st">Готово</span><span>Маме не показывать!</span></div>
 </main>
 
 <!-- ===== ЧАТ ===== -->
 <section class="win" id="chat" aria-labelledby="ct">
-<div class="title"><span class="t" id="ct">Чат гостей — новоселье</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+<div class="title"><span class="t" id="ct">Чат гостей — новоселье</span><span class="ctl"><button type="button" data-act="min" aria-label="Свернуть"><svg viewBox="0 0 12 12"><rect x="2" y="8" width="7" height="2.2" fill="#fff"/></svg></button><button type="button" data-act="max" aria-label="Развернуть"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.4"/><rect x="2" y="2" width="8" height="3" fill="#fff"/></svg></button><button type="button" data-act="close" class="x" aria-label="Закрыть"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button></span></div>
 <div class="body">
 <div class="log" id="log" role="log" aria-live="polite" aria-label="Сообщения чата"><div class="empty">Загружаю сообщения…</div></div>
 <div class="lock" id="lock">Чтобы писать в чат, сначала заполните анкету выше. <button class="linkbtn" id="have" type="button">Уже заполняли анкету?</button>
@@ -160,22 +165,36 @@ input:disabled{background:#f1efe2;color:#777}
 <!-- ===== ДЕМОТИВАТОР ===== -->
 <section class="demo" aria-label="Демотиватор">
 <div class="frame"><div>
-<svg role="img" aria-label="Многоэтажка с горящими окнами ночью" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice">
-<defs><linearGradient id="nt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1030"/><stop offset="1" stop-color="#3b2a6b"/></linearGradient></defs>
-<rect width="320" height="400" fill="url(#nt)"/>
-<circle cx="270" cy="44" r="20" fill="#fff6c8"/>
-<circle cx="40" cy="30" r="1.8" fill="#fff"/><circle cx="90" cy="18" r="1.4" fill="#fff"/><circle cx="150" cy="40" r="1.6" fill="#fff"/><circle cx="210" cy="20" r="1.4" fill="#fff"/><circle cx="300" cy="100" r="1.4" fill="#fff"/>
-<rect x="20" y="44" width="280" height="356" fill="#59616f"/><rect x="20" y="44" width="280" height="8" fill="#3f4652"/>
-<rect x="34" y="58" width="26" height="20" fill="#ffd84a"/><rect x="78" y="58" width="26" height="20" fill="#ffd84a"/><rect x="122" y="58" width="26" height="20" fill="#2a3140"/><rect x="166" y="58" width="26" height="20" fill="#ffd84a"/><rect x="210" y="58" width="26" height="20" fill="#ffd84a"/><rect x="254" y="58" width="26" height="20" fill="#ffd84a"/><rect x="34" y="92" width="26" height="20" fill="#ffd84a"/><rect x="78" y="92" width="26" height="20" fill="#ffd84a"/><rect x="122" y="92" width="26" height="20" fill="#ffd84a"/><rect x="166" y="92" width="26" height="20" fill="#ffd84a"/><rect x="210" y="92" width="26" height="20" fill="#ffd84a"/><rect x="254" y="92" width="26" height="20" fill="#ffd84a"/><rect x="34" y="126" width="26" height="20" fill="#ffd84a"/><rect x="78" y="126" width="26" height="20" fill="#2a3140"/><rect x="122" y="126" width="26" height="20" fill="#ffd84a"/><rect x="166" y="126" width="26" height="20" fill="#ffd84a"/><rect x="210" y="126" width="26" height="20" fill="#2a3140"/><rect x="254" y="126" width="26" height="20" fill="#2a3140"/><rect x="34" y="160" width="26" height="20" fill="#2a3140"/><rect x="78" y="160" width="26" height="20" fill="#ffd84a"/><rect x="122" y="160" width="26" height="20" fill="#2a3140"/><rect x="166" y="160" width="26" height="20" fill="#ffd84a"/><rect x="210" y="160" width="26" height="20" fill="#2a3140"/><rect x="254" y="160" width="26" height="20" fill="#ffd84a"/><rect x="34" y="194" width="26" height="20" fill="#ffd84a"/><rect x="78" y="194" width="26" height="20" fill="#ffd84a"/><rect x="122" y="194" width="26" height="20" fill="#ffd84a"/><rect x="166" y="194" width="26" height="20" fill="#2a3140"/><rect x="210" y="194" width="26" height="20" fill="#ffd84a"/><rect x="254" y="194" width="26" height="20" fill="#2a3140"/><rect x="34" y="228" width="26" height="20" fill="#2a3140"/><rect x="78" y="228" width="26" height="20" fill="#ffd84a"/><rect x="122" y="228" width="26" height="20" fill="#ffd84a"/><rect x="166" y="228" width="26" height="20" fill="#ffd84a"/><rect x="210" y="228" width="26" height="20" fill="#ffd84a"/><rect x="254" y="228" width="26" height="20" fill="#ffd84a"/><rect x="34" y="262" width="26" height="20" fill="#2a3140"/><rect x="78" y="262" width="26" height="20" fill="#ffd84a"/><rect x="122" y="262" width="26" height="20" fill="#ffd84a"/><rect x="166" y="262" width="26" height="20" fill="#2a3140"/><rect x="210" y="262" width="26" height="20" fill="#ffd84a"/><rect x="254" y="262" width="26" height="20" fill="#ffd84a"/><rect x="34" y="296" width="26" height="20" fill="#2a3140"/><rect x="78" y="296" width="26" height="20" fill="#2a3140"/><rect x="122" y="296" width="26" height="20" fill="#ffd84a"/><rect x="166" y="296" width="26" height="20" fill="#2a3140"/><rect x="210" y="296" width="26" height="20" fill="#ffd84a"/><rect x="254" y="296" width="26" height="20" fill="#2a3140"/><rect x="34" y="330" width="26" height="20" fill="#2a3140"/><rect x="78" y="330" width="26" height="20" fill="#ffd84a"/><rect x="122" y="330" width="26" height="20" fill="#2a3140"/><rect x="166" y="330" width="26" height="20" fill="#ffd84a"/><rect x="210" y="330" width="26" height="20" fill="#ffd84a"/><rect x="254" y="330" width="26" height="20" fill="#2a3140"/>
-<rect x="136" y="364" width="48" height="36" fill="#2a3140"/><rect x="0" y="388" width="320" height="12" fill="#1a1f2a"/>
+<svg role="img" aria-label="Жилой комплекс: кирпичные дома с оранжевыми полосами" viewBox="0 0 472 392" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f86dc"/><stop offset="1" stop-color="#c4e2ff"/></linearGradient>
+<pattern id="wn" width="8" height="7" patternUnits="userSpaceOnUse"><rect x="1.4" y="1" width="4.8" height="3.6" fill="#223140"/><rect x=".6" y="5" width="6.6" height="1.4" fill="#fff4e6"/></pattern>
+<pattern id="wg" width="7" height="7.5" patternUnits="userSpaceOnUse"><rect x="1.2" y="1" width="4" height="3.4" fill="#4c586b"/><rect x=".6" y="5" width="5.6" height="1.2" fill="#fff"/></pattern></defs>
+<rect width="472" height="392" fill="url(#sky)"/>
+<g fill="#fff" opacity=".85"><ellipse cx="70" cy="40" rx="42" ry="8"/><ellipse cx="110" cy="33" rx="28" ry="7"/><ellipse cx="395" cy="52" rx="46" ry="9"/><ellipse cx="435" cy="43" rx="28" ry="7"/><ellipse cx="250" cy="22" rx="30" ry="5"/></g>
+<rect x="376" y="128" width="96" height="250" fill="#7b4a3a"/><rect x="376" y="128" width="96" height="250" fill="url(#wn)" opacity=".8"/><rect x="376" y="250" width="96" height="4" fill="#7fc13a"/><rect x="376" y="255" width="96" height="4" fill="#fff"/>
+<rect x="0" y="112" width="38" height="262" fill="#d9dbe0"/><rect x="0" y="112" width="38" height="262" fill="url(#wg)"/><rect x="0" y="290" width="38" height="5" fill="#7fc13a"/><rect x="0" y="297" width="38" height="4" fill="#e9923f"/>
+<rect x="69" y="125" width="78" height="250" fill="#d0d3d9"/><rect x="69" y="125" width="78" height="250" fill="url(#wg)"/>
+<rect x="146" y="138" width="38" height="236" fill="#e59546"/><rect x="146" y="138" width="38" height="236" fill="url(#wn)"/>
+<rect x="350" y="196" width="62" height="182" fill="#d98a46"/><rect x="350" y="196" width="62" height="182" fill="url(#wn)"/><rect x="350" y="300" width="62" height="5" fill="#f0700f"/><rect x="350" y="307" width="62" height="5" fill="#fff"/>
+<rect x="182" y="62" width="168" height="316" fill="#e3924a"/><rect x="182" y="62" width="168" height="316" fill="url(#wn)"/><rect x="338" y="62" width="12" height="316" fill="#8a4a1c" opacity=".3"/><rect x="182" y="60" width="168" height="3" fill="#a85a22"/>
+<rect x="182" y="336" width="168" height="7" fill="#fff"/><rect x="182" y="344" width="168" height="5" fill="#f0700f"/>
+<g fill="#e8b312"><rect x="82" y="88" width="5" height="110"/><rect x="44" y="86" width="64" height="3.5"/><rect x="44" y="82" width="6" height="8"/><path d="M84 70l-30 16M84 70l24 16" stroke="#e8b312" stroke-width="1.2" fill="none"/><rect x="82" y="66" width="5" height="22"/></g>
+<path d="M84.5 90v20M96 89v30" stroke="#333" stroke-width=".8"/>
+<rect x="49" y="196" width="134" height="182" fill="#cf7a3e"/><rect x="49" y="196" width="134" height="182" fill="url(#wn)"/><rect x="49" y="194" width="134" height="3" fill="#a85a22"/>
+<rect x="49" y="296" width="134" height="5" fill="#f0700f"/><rect x="49" y="303" width="134" height="6" fill="#fff"/><rect x="49" y="311" width="134" height="67" fill="#6e3524" opacity=".5"/><rect x="49" y="311" width="134" height="67" fill="url(#wn)" opacity=".7"/>
+<rect x="49" y="340" width="134" height="3" fill="#f0700f"/><rect x="49" y="346" width="134" height="4" fill="#fff"/>
+<rect x="0" y="372" width="472" height="20" fill="#a68057"/><rect x="0" y="378" width="140" height="14" fill="#7d7f84"/>
+<rect x="18" y="366" width="14" height="7" fill="#e8b312"/>
 </svg></div></div>
 <h2>НОВОСЕЛЬЕ</h2>
-<p>22 ноября 2006 года в 15:00 (или в 16:00).<br>Приходи — будет весело. Или не будет.<br>Но семки будут.</p>
+<p>22 ноября 2006 года в 15:00 (или в 16:00).<br>Приходи — будет весело. Или не будет.<br><b data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</b></p>
 </section>
 
 </div>
 
-<div class="task"><div class="start">пуск</div><div class="clock">15:00</div></div>
+<canvas id="fw" aria-hidden="true"></canvas>
+<div class="hint" id="hint" aria-hidden="true"><svg viewBox="0 0 60 70" width="44" height="52"><path d="M30 4C22 18 36 26 28 40C24 48 30 52 30 56" fill="none" stroke="#d4001c" stroke-width="5" stroke-linecap="round"/><path d="M14 44L30 62L47 42" fill="none" stroke="#d4001c" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>листай вниз!</span></div>
+<div class="task"><button class="start" id="start" type="button">пуск</button><div class="clock" id="clock">15:00</div></div>
 
 <div class="ov" id="ov" role="alertdialog" aria-modal="true" aria-labelledby="dt" aria-describedby="dm">
 <div class="dlg"><div class="title"><span class="t" id="dt">Сообщение</span></div>
@@ -186,7 +205,7 @@ input:disabled{background:#f1efe2;color:#777}
 // ===== НАСТРОЙКИ (меняйте здесь) =====
 var CONFIG = {
   endpoint: "https://script.google.com/macros/s/AKfycby3B5b9zBBTLxmHX80uWI7jrYb2OePk4yQjzCM83qKU-4rRD8axhlU5khN0BHQn1KoXHA/exec",           // адрес Google Apps Script (веб-приложение)
-  address: "[АДРЕС НОВОЙ ХАТЫ]"
+  address: "ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8"
 };
 // =====================================
 var KEY = 'novosele_guest', API = CONFIG.endpoint;
@@ -204,7 +223,7 @@ function dlg(kind, title, text){ $('dt').textContent = title; $('dm').textConten
 $('ok').onclick = function(){ $('ov').classList.remove('on'); };
 
 /* ---- анкета ---- */
-var f = $('f'), btn = $('send'), st = $('st');
+var f = $('f'), btn = $('send');
 f.addEventListener('submit', function(ev){
   ev.preventDefault();
   var d = new FormData(f);
@@ -212,16 +231,23 @@ f.addEventListener('submit', function(ev){
   var name = String(d.get('name') || '').trim();
   if (!name) { dlg('err', 'Ошибка', 'Напишите имя и фамилию!'); return; }
   if (!d.get('coming')) { dlg('err', 'Ошибка', 'Ответьте, придёте ли вы на новоселье!'); return; }
+  var coming = d.get('coming'), plus = d.get('plus') || '0';
   var body = new URLSearchParams();
   body.append('name', name); body.append('coming', d.get('coming')); body.append('plus', d.get('plus') || '0');
-  btn.disabled = true; st.textContent = 'Отправка…';
+  btn.disabled = true; btn.textContent = 'Отправка…';
   fetch(API, { method: 'POST', mode: 'no-cors', body: body })
     .then(function(){
       setGuest(name); updateChatLock();
+      if (coming !== 'не смогу') {
+        var note = '[+] придёт на новоселье' + (+plus > 0 ? ' (+' + plus + ')' : '') + '!';
+        var nb = new URLSearchParams(); nb.append('action', 'chat'); nb.append('name', name); nb.append('text', note);
+        local = local.concat([{ t: Date.now(), n: name, m: note }]); render(local);
+        fetch(API, { method: 'POST', mode: 'no-cors', body: nb }).then(function(){ setTimeout(load, 1500); });
+      }
       dlg('ok', 'Анкета принята', 'Анкета принята! Теперь вам открыт чат гостей ниже. Ё маё, ждём 22 ноября!!!');
-      f.reset(); btn.disabled = false; st.textContent = 'Готово';
+      f.reset(); btn.disabled = false; btn.textContent = 'Отправить';
     })
-    .catch(function(){ dlg('err', 'Ошибка', 'Не отправилось. Попробуйте ещё раз.'); btn.disabled = false; st.textContent = 'Готово'; });
+    .catch(function(){ dlg('err', 'Ошибка', 'Не отправилось. Попробуйте ещё раз.'); btn.disabled = false; btn.textContent = 'Отправить'; });
 });
 
 /* ---- чат ---- */
@@ -233,6 +259,7 @@ function render(list){
   log.textContent = '';
   if (!list.length) { var e = document.createElement('div'); e.className = 'empty'; e.textContent = 'Пока никто ничего не написал. Будьте первым!'; log.appendChild(e); return; }
   list.forEach(function(m){
+    if (m.m.indexOf('[+] ') === 0) { var q = document.createElement('div'); q.className = 'm sys'; var qb = document.createElement('b'); qb.textContent = m.n; q.appendChild(document.createTextNode('🎉 ')); q.appendChild(qb); q.appendChild(document.createTextNode(' ' + m.m.slice(4))); log.appendChild(q); return; }
     var p = document.createElement('div'); p.className = 'm' + (m.n.toLowerCase() === me ? ' me' : '');
     var b = document.createElement('b'); b.className = 'n'; b.textContent = m.n;
     var t = document.createElement('span'); t.className = 'tm'; t.textContent = ' (' + hm(m.t) + '): ';
@@ -277,6 +304,46 @@ $('chk').addEventListener('submit', function(ev){
     .catch(function(){ dlg('err', 'Ошибка', 'Не удалось проверить имя, попробуйте ещё раз.'); });
 });
 updateChatLock(); load();
+/* окна: свернуть / развернуть / закрыть */
+document.querySelectorAll('.ctl button').forEach(function(b){
+  b.addEventListener('click', function(){
+    var w = b.closest('.win'), a = b.getAttribute('data-act');
+    if (a === 'min') w.classList.toggle('min');
+    else if (a === 'max') { w.classList.remove('min'); w.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    else dlg('err', 'Ошибка', 'Это окно нельзя закрыть: вы приглашены на новоселье!');
+  });
+});
+/* часы */
+function tick(){ var d = new Date(); $('clock').textContent = ('0'+d.getHours()).slice(-2) + ':' + ('0'+d.getMinutes()).slice(-2); }
+tick(); setInterval(tick, 1000);
+/* подсказка про прокрутку */
+function hintCheck(){ if ((window.scrollY || document.documentElement.scrollTop) > 40) $('hint').classList.add('off'); }
+addEventListener('scroll', hintCheck, { passive: true });
+/* салют */
+var fwOn = false;
+function fireworks(){
+  if (fwOn) return; fwOn = true;
+  var c = $('fw'), x = c.getContext('2d'), dpr = Math.min(window.devicePixelRatio || 1, 2), W = innerWidth, H = innerHeight;
+  c.width = W * dpr; c.height = H * dpr; c.style.display = 'block';
+  var ps = [], t0 = 0, last = -1000, cols = ['#ff3b30','#ffd60a','#34c759','#0a84ff','#ff9f0a','#bf5af2'];
+  function burst(){
+    var cx = W * (.15 + Math.random() * .7), cy = H * (.12 + Math.random() * .4), col = cols[Math.random() * cols.length | 0];
+    for (var i = 0; i < 70; i++) { var a = Math.random() * 6.283, s = 1 + Math.random() * 4.2; ps.push({ x: cx, y: cy, vx: Math.cos(a) * s, vy: Math.sin(a) * s, l: 1, c: Math.random() < .25 ? '#fff' : col }); }
+  }
+  function frame(t){
+    if (!t0) t0 = t; var el = t - t0;
+    if (el < 4500 && t - last > 380) { burst(); last = t; }
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    x.globalCompositeOperation = 'destination-out'; x.fillStyle = 'rgba(0,0,0,.25)'; x.fillRect(0, 0, W, H);
+    x.globalCompositeOperation = 'lighter';
+    ps = ps.filter(function(p){ return p.l > 0; });
+    ps.forEach(function(p){ p.x += p.vx; p.y += p.vy; p.vx *= .985; p.vy = p.vy * .985 + .06; p.l -= .014; x.globalAlpha = Math.max(p.l, 0); x.fillStyle = p.c; x.beginPath(); x.arc(p.x, p.y, 2.2, 0, 6.283); x.fill(); });
+    x.globalAlpha = 1;
+    if (el < 4500 || ps.length) requestAnimationFrame(frame); else { c.style.display = 'none'; fwOn = false; }
+  }
+  requestAnimationFrame(frame);
+}
+$('start').addEventListener('click', fireworks);
 setInterval(function(){ if (!document.hidden) load(); }, 6000);
 document.addEventListener('visibilitychange', function(){ if (!document.hidden) load(); });
 </script>
