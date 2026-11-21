@@ -93,11 +93,10 @@ input:disabled{background:#f1efe2;color:#777}
 .clock{padding:0 14px;color:#fff;font-size:14px}
 
 #fw{position:fixed;inset:0;width:100%;height:100%;z-index:20;pointer-events:none;display:none}
-.hint{position:fixed;left:50%;bottom:44px;transform:translateX(-50%);z-index:15;pointer-events:none;display:flex;align-items:center;gap:10px;font-family:'Marck Script',cursive;font-size:28px;color:#d4001c;background:#fff7b8;border:3px solid #141414;border-radius:18px;padding:2px 14px 2px 18px;box-shadow:4px 5px 0 rgba(0,0,0,.3);transition:opacity .35s;white-space:nowrap}
+.hint{position:fixed;left:50%;bottom:46px;transform:translateX(-50%);z-index:15;pointer-events:none;display:flex;flex-direction:column;align-items:center;font-family:'Marck Script',cursive;font-size:26px;color:#d4001c;background:#fff7b8;border:3px solid #141414;border-radius:16px;padding:4px 16px 2px;box-shadow:4px 5px 0 rgba(0,0,0,.3);animation:bob 1.1s ease-in-out infinite;transition:opacity .35s;white-space:nowrap}
 .hint.off{opacity:0}
-.swipe .fg{animation:sw 1.4s ease-in-out infinite}
-@keyframes sw{0%{transform:translateY(14px)}60%,100%{transform:translateY(-22px)}}
-@media (prefers-reduced-motion:reduce){.swipe .fg{animation:none}}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+@media (prefers-reduced-motion:reduce){.hint{animation:none}}
 .log .sys{color:#0b6b0b;background:#e8ffe8;padding:2px 4px;border-left:3px solid #2fa32f}
 /* ---------- диалог ---------- */
 .ov{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;padding:14px}
@@ -123,7 +122,7 @@ input:disabled{background:#f1efe2;color:#777}
 <div class="tv-row"><span class="tm ru">17:00</span><span><b>«Слышь, Башка?»</b> — викторина на <s>ютубе</s> ВК Видео, приз — поножовщина для двух победителей</span></div>
 <div class="tv-row"><span class="tm ru">18:00</span><span><b>«Переговоры на корточках»</b> — чемпионат, судит Бог</span></div>
 <div class="tv-row"><span class="tm ru">19:00</span><span><b>«Mortal Kombat»</b> — турнир на приставке, потом фотосессия у подъезда</span></div>
-<div class="tv-row"><span class="tm ru">20:00</span><span><b>«Свободное время»</b></span></div>
+<div class="tv-row"><span class="tm ru">20:00</span><span><b>«Свободное время»</b> — чай на кухне, гитара во дворе и разговоры «за жизнь»</span></div>
 </div>
 <div class="tv-info">
 <div class="tv-where"><span class="tv-lab">ГДЕ СМОТРЕТЬ</span><span class="tv-val" data-cfg="address">ЛЮБЛИНСКАЯ 74К1, ПОДЪЕЗД 1, ЭТАЖ 2, КВ 8</span><span style="font-size:15px">Форма одежды: парадная.</span></div>
@@ -203,7 +202,7 @@ input:disabled{background:#f1efe2;color:#777}
 </div>
 
 <canvas id="fw" aria-hidden="true"></canvas>
-<div class="hint" id="hint" aria-hidden="true"><span class="hs">листай вниз!</span><svg class="swipe" viewBox="0 0 80 110" width="70" height="96"><path d="M40 8v52" stroke="#d4001c" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round" fill="none"/><path d="M26 20L40 4L54 20" stroke="#d4001c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g class="fg"><path d="M33 70V56a5 5 0 0 1 10 0v14l11 3a8 8 0 0 1 6 8l-3 22H34L22 82a5 5 0 0 1 8-6l3 4z" fill="#fff" stroke="#141414" stroke-width="3" stroke-linejoin="round"/></g></svg></div>
+<div class="hint" id="hint" aria-hidden="true"><span>листай вниз!</span><svg viewBox="0 0 60 70" width="44" height="52"><path d="M30 4C22 18 36 26 28 40C24 48 30 52 30 56" fill="none" stroke="#d4001c" stroke-width="5" stroke-linecap="round"/><path d="M14 44L30 62L47 42" fill="none" stroke="#d4001c" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 <div class="task"><button class="start" id="start" type="button">пуск</button><div class="clock" id="clock">15:00</div></div>
 
 <div class="ov" id="ov" role="alertdialog" aria-modal="true" aria-labelledby="dt" aria-describedby="dm">
@@ -222,15 +221,18 @@ var KEY = 'novosele_guest', API = CONFIG.endpoint;
 function $(id){ return document.getElementById(id); }
 function getGuest(){ try { return localStorage.getItem(KEY) || ''; } catch(e){ return ''; } }
 function setGuest(n){ try { localStorage.setItem(KEY, n); } catch(e){} }
-document.querySelectorAll('[data-cfg="address"]').forEach(function(e){ e.textContent = CONFIG.address.replace(/(ЛЮБЛИНСКАЯ|ПОДЪЕЗД|ЭТАЖ|КВ) /g, '$1\u00a0'); });
+document.querySelectorAll('[data-cfg="address"]').forEach(function(e){ e.textContent = '';
+  CONFIG.address.split(', ').forEach(function(part, i, a){ var sp = document.createElement('span'); sp.style.whiteSpace = 'nowrap'; sp.textContent = part + (i < a.length - 1 ? ',' : ''); if (i) e.appendChild(document.createTextNode(' ')); e.appendChild(sp); });
+});
 
 /* ---- диалоги ---- */
 var ICON = {
   ok:'<circle cx="24" cy="24" r="22" fill="#2a6be8" stroke="#fff" stroke-width="3"/><path d="M13 25l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
   err:'<circle cx="24" cy="24" r="22" fill="#e2461f" stroke="#fff" stroke-width="3"/><path d="M15 15l18 18M33 15L15 33" stroke="#fff" stroke-width="5" stroke-linecap="round"/>'
 };
-function dlg(kind, title, text){ $('dt').textContent = title; $('dm').textContent = text; $('di').innerHTML = ICON[kind]; $('ov').classList.add('on'); $('ok').focus(); }
-$('ok').onclick = function(){ $('ov').classList.remove('on'); };
+var afterOk = null;
+function dlg(kind, title, text, cb){ afterOk = cb || null; $('dt').textContent = title; $('dm').textContent = text; $('di').innerHTML = ICON[kind]; $('ov').classList.add('on'); $('ok').focus(); }
+$('ok').onclick = function(){ $('ov').classList.remove('on'); var f = afterOk; afterOk = null; if (f) f(); };
 
 /* ---- анкета ---- */
 var f = $('f'), btn = $('send');
@@ -254,13 +256,14 @@ f.addEventListener('submit', function(ev){
         addLocal(name, note);
         postNote(nb, name, 0);
       }
-      dlg('ok', 'Анкета принята', 'Анкета принята! Теперь вам открыт чат гостей ниже. Ё маё, ждём 22 ноября!!!');
+      dlg('ok', 'Анкета принята', 'Анкета принята! Теперь вам открыт чат гостей ниже. Ё маё, ждём 22 ноября!!!', goChat);
       f.reset(); btn.disabled = false; btn.textContent = 'Отправить';
     })
     .catch(function(){ dlg('err', 'Ошибка', 'Не отправилось. Попробуйте ещё раз.'); btn.disabled = false; btn.textContent = 'Отправить'; });
 });
 
 /* ---- чат ---- */
+function goChat(){ $('chat').scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(load, 800); }
 function postNote(nb, name, tries){
   // ждём, пока анкета реально появится в таблице, и только потом пишем в чат
   fetch(API + '?action=check&name=' + encodeURIComponent(name) + '&_=' + Date.now())
