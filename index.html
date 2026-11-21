@@ -382,7 +382,7 @@ function sprites(){
   return SPR;
 }
 function fireworks(){
-  if (fwOn) return; fwOn = true;
+  if (fwOn) return; fwOn = true; $('start').style.pointerEvents = 'none'; $('start').setAttribute('aria-disabled', 'true');
   var spr = sprites(), keys = Object.keys(spr);
   var c = $('fw'), x = c.getContext('2d'), W = innerWidth, H = innerHeight;
   c.width = W; c.height = H; c.style.display = 'block';
@@ -407,7 +407,7 @@ function fireworks(){
       x.drawImage(p.im, -p.sz / 2, -p.sz / 2, p.sz, p.sz);
     }
     x.setTransform(1, 0, 0, 1, 0, 0); x.globalAlpha = 1;
-    if (el < 4200 || ps.length) requestAnimationFrame(frame); else { x.clearRect(0, 0, W, H); c.style.display = 'none'; fwOn = false; }
+    if (el < 4200 || ps.length) requestAnimationFrame(frame); else { x.clearRect(0, 0, W, H); c.style.display = 'none'; fwOn = false; $('start').style.pointerEvents = ''; $('start').removeAttribute('aria-disabled'); }
   }
   requestAnimationFrame(frame);
 }
