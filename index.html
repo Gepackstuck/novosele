@@ -97,11 +97,11 @@ input:disabled{background:#f1efe2;color:#777}
 .tray .ti{display:flex;align-items:center;justify-content:center;background:none;border:0;padding:3px;border-radius:4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .tray .ti:hover{background:rgba(255,255,255,.28)}.tray .ti:active{transform:scale(.88)}
 .tray{gap:2px!important;padding:0 6px!important}
-.drive{position:fixed;left:0;bottom:34px;z-index:7;pointer-events:none;display:none}
+.drive{position:fixed;left:0;bottom:34px;z-index:25;pointer-events:none;display:none}
 .drive.go{display:block;animation:drive 4s linear forwards}.drive.go svg{animation:bump .22s ease-in-out infinite alternate}
 @keyframes drive{from{transform:translateX(-90px)}to{transform:translateX(calc(100vw + 20px))}}
 @keyframes bump{to{transform:translateY(-3px)}}
-.balloon{position:fixed;right:8px;bottom:42px;z-index:12;max-width:min(260px,calc(100vw - 20px));background:#ffffe1;border:1px solid #000;border-radius:8px;padding:8px 12px;font-size:13px;line-height:1.35;box-shadow:2px 3px 0 rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .25s}
+.balloon{position:fixed;right:8px;bottom:42px;z-index:30;max-width:min(260px,calc(100vw - 20px));background:#ffffe1;border:1px solid #000;border-radius:8px;padding:8px 12px;font-size:13px;line-height:1.35;box-shadow:2px 3px 0 rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .25s}
 .balloon.on{opacity:1;pointer-events:auto}.balloon b{display:block;margin-bottom:2px}
 .clock{display:flex;align-items:center;background:linear-gradient(180deg,#1b8aff,#0e5fd8);padding:0 14px;color:#fff;font-size:14px}
 
