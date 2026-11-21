@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Новоселье 22.11.2006 — анкета гостя</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Pacifico&display=swap">
+<style>
+:root{--ink:#1b3fc7;--red:#e2003f}
+*{box-sizing:border-box}
+body{margin:0;background:#2a0f7a;background:radial-gradient(circle at 50% 0,#7a3cff,#2a0f7a 60%,#12083a);min-height:100vh;display:flex;justify-content:center;padding:20px 12px;font-family:'Marck Script',cursive;color:var(--ink)}
+.sheet{width:100%;max-width:560px;position:relative;padding:28px 22px 28px 58px;background-color:#fffffa;background-image:linear-gradient(#7fa8e0 1px,transparent 1px),linear-gradient(90deg,#7fa8e0 1px,transparent 1px);background-size:24px 24px;box-shadow:8px 10px 0 rgba(0,0,0,.35);transform:rotate(-.4deg)}
+.sheet:before{content:"";position:absolute;left:44px;top:0;bottom:0;width:2px;background:#e0394f}
+h1{font-family:'Pacifico',cursive;font-size:44px;line-height:1.05;color:var(--red);margin:0 0 4px;transform:rotate(-2deg)}
+.sub{font-size:22px;margin:0 0 14px}
+.date{border:3px dashed var(--red);border-radius:14px;padding:10px 14px;background:rgba(255,255,255,.9);font-size:23px;color:var(--red);margin-bottom:16px}
+.date small{display:block;font-size:19px;color:var(--ink)}
+fieldset{border:0;padding:0;margin:0 0 14px}
+legend,label.q{font-size:24px;display:block;margin-bottom:4px;padding:0}
+input[type=text],input[type=tel],input[type=number],textarea{width:100%;font:inherit;font-size:24px;color:var(--ink);background:transparent;border:0;border-bottom:2px solid var(--ink);padding:2px 4px;border-radius:0}
+textarea{border:2px solid var(--ink);min-height:84px}
+input:focus,textarea:focus{outline:3px solid #ffd84a}
+.opt{display:flex;align-items:center;gap:10px;font-size:23px;margin:3px 0;min-height:44px;cursor:pointer}
+.opt input{width:24px;height:24px;accent-color:var(--ink);flex:none}
+button{font-family:'Pacifico',cursive;font-size:26px;color:#fff;background:var(--red);border:3px solid #6b0a2a;border-radius:14px;padding:10px 22px;min-height:48px;cursor:pointer;box-shadow:4px 5px 0 #6b0a2a}
+button:disabled{opacity:.6;cursor:default}
+.msg{margin-top:14px;font-size:24px;min-height:30px}
+.msg.ok{color:#0a7a2a}.msg.err{color:var(--red)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.note{font-size:18px;margin-top:10px}
+</style>
+</head>
+<body>
+<main class="sheet">
+<h1>Анкета гостя</h1>
+<p class="sub">на новоселье, заполнять гелевой ручкой!!!</p>
+<div class="date"><b>22 ноября 2006 года, в 15:00</b> <small>(или в 16:00, мы ещё не решили)</small><small>Адрес: <b data-cfg="address">[АДРЕС НОВОЙ ХАТЫ]</b></small></div>
+
+<form id="f" novalidate>
+<div class="hp" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+<fieldset><label class="q" for="name">1. Имя, фамилия, погоняло:</label><input id="name" name="name" type="text" required autocomplete="name"></fieldset>
+
+<fieldset><legend>2. Придёшь на новоселье?</legend>
+<label class="opt"><input type="radio" name="coming" value="да" required>да</label>
+<label class="opt"><input type="radio" name="coming" value="конечно да">конечно да</label>
+<label class="opt"><input type="radio" name="coming" value="да, но в 16:00">да, но в 16:00</label>
+<label class="opt"><input type="radio" name="coming" value="не смогу">не смогу (неуважительные причины не принимаются)</label></fieldset>
+
+<fieldset><label class="q" for="plus">3. Сколько человек с тобой (кроме тебя)?</label><input id="plus" name="plus" type="number" min="0" max="5" value="0" inputmode="numeric"></fieldset>
+
+<fieldset><legend>4. Что принесёшь с собой?</legend>
+<label class="opt"><input type="checkbox" name="bring" value="семки">семки</label>
+<label class="opt"><input type="checkbox" name="bring" value="хорошее настроение">хорошее настроение</label>
+<label class="opt"><input type="checkbox" name="bring" value="шлёпки с носками">шлёпки с носками (обязательно)</label></fieldset>
+
+<fieldset><legend>5. Любимый герой:</legend>
+<label class="opt"><input type="radio" name="hero" value="Башка">Башка</label>
+<label class="opt"><input type="radio" name="hero" value="Ржавый">Ржавый</label>
+<label class="opt"><input type="radio" name="hero" value="бабушка из подъезда">бабушка из подъезда</label></fieldset>
+
+<fieldset><label class="q" for="phone">6. Как с тобой связаться (телефон или ник)?</label><input id="phone" name="contact" type="text" autocomplete="tel"></fieldset>
+
+<fieldset><label class="q" for="note">7. Аллергии, пожелания, что-то ещё?</label><textarea id="note" name="note"></textarea></fieldset>
+
+<button id="send" type="submit">Отправить анкету</button>
+<div id="msg" class="msg" role="status" aria-live="polite"></div>
+<p class="note">Анкета заполнена. Маме не показывать!</p>
+</form>
+</main>
+
+<script>
+// ===== НАСТРОЙКИ (меняйте здесь) =====
+var CONFIG = {
+  // Адрес веб-приложения Google Apps Script (см. README.md, шаг 3). Пока пусто — форма работает в «пробном» режиме.
+  endpoint: "",
+  address: "[АДРЕС НОВОЙ ХАТЫ]"
+};
+// =====================================
+document.querySelectorAll('[data-cfg="address"]').forEach(function(e){ e.textContent = CONFIG.address; });
+var f = document.getElementById('f'), msg = document.getElementById('msg'), btn = document.getElementById('send');
+function show(t, c){ msg.textContent = t; msg.className = 'msg ' + (c||''); }
+f.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var d = new FormData(f);
+  if (d.get('website')) return;                      // ловушка для спам-ботов
+  if (!String(d.get('name')||'').trim()) { show('Напиши, как тебя зовут!', 'err'); return; }
+  if (!d.get('coming')) { show('Ответь, придёшь ли ты!', 'err'); return; }
+  var body = new URLSearchParams();
+  body.append('name', d.get('name').trim());
+  body.append('coming', d.get('coming'));
+  body.append('plus', d.get('plus') || '0');
+  body.append('bring', d.getAll('bring').join(', '));
+  body.append('hero', d.get('hero') || '');
+  body.append('contact', d.get('contact') || '');
+  body.append('note', d.get('note') || '');
+  btn.disabled = true; show('Отправляю…');
+  if (!CONFIG.endpoint) { setTimeout(function(){ show('Пробный режим: адрес таблицы ещё не подключён, данные никуда не ушли.', 'err'); btn.disabled = false; }, 400); return; }
+  fetch(CONFIG.endpoint, { method: 'POST', mode: 'no-cors', body: body })
+    .then(function(){ show('Анкета принята! Ё маё, ждём!!!', 'ok'); f.reset(); btn.disabled = false; })
+    .catch(function(){ show('Не отправилось. Попробуй ещё раз или напиши напрямую.', 'err'); btn.disabled = false; });
+});
+</script>
+</body>
+</html>
