@@ -4,97 +4,176 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Новоселье 22.11.2006 — приглашение</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Marck+Script&display=swap">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0}
-body{min-height:100vh;font:14px Tahoma,'Trebuchet MS',Verdana,sans-serif;color:#000;background:linear-gradient(180deg,#3a7be0 0%,#8fc3ff 50%,#cfe8ff 100%);padding:18px 10px 64px;position:relative;overflow-x:hidden}
-.hill{position:fixed;left:-20%;right:-20%;bottom:30px;height:34vh;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#5fbf3a,#2f8a1c);z-index:0}
-.cloud{position:fixed;background:#fff;border-radius:20px;opacity:.85;z-index:0}
-.win{position:relative;z-index:1;max-width:560px;margin:0 auto;border:3px solid #0a3fb3;border-radius:9px 9px 0 0;background:#ece9d8;box-shadow:6px 8px 0 rgba(0,0,0,.28)}
-.title{height:32px;background:linear-gradient(180deg,#3d95ff 0%,#0a5bdc 45%,#0a4fc8 100%);display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 10px;color:#fff;font-weight:700;font-size:14px;border-radius:6px 6px 0 0}
-.title span.t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body{min-height:100vh;font:15px/1.35 Tahoma,'Trebuchet MS',Verdana,sans-serif;color:#000;background:linear-gradient(180deg,#3a7be0 0%,#8fc3ff 40%,#cfe8ff 100%);background-attachment:fixed;padding:14px 10px 64px;position:relative;overflow-x:hidden;-webkit-text-size-adjust:100%}
+.hill{position:fixed;left:-20%;right:-20%;bottom:30px;height:30vh;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#5fbf3a,#2f8a1c);z-index:0;pointer-events:none}
+.col{position:relative;z-index:1;width:100%;max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.ru{font-family:'Russo One',Impact,Arial,sans-serif}
+
+/* ---------- телепрограмма ---------- */
+.tv{background:#f6efd6;border:4px solid #141414;box-shadow:6px 8px 0 rgba(0,0,0,.28);padding:clamp(10px,3vw,20px);display:flex;flex-direction:column;gap:10px;color:#141414;font-family:Arial,'Trebuchet MS',sans-serif}
+.tv-h{display:flex;border:4px solid #141414;background:#d4001c}
+.tv-h1{flex:1;min-width:0;padding:8px 12px}
+.tv-title{font-size:clamp(24px,8.2vw,44px);line-height:1;color:#fff;letter-spacing:1px;overflow-wrap:anywhere}
+.tv-date{font-size:clamp(11px,3vw,15px);font-weight:700;color:#ffe600;letter-spacing:2px;margin-top:6px}
+.tv-age{width:clamp(64px,18vw,92px);background:#ffe600;border-left:4px solid #141414;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.tv-age b{font-size:clamp(22px,7vw,34px);line-height:1}.tv-age span{font-size:12px;font-weight:700;margin-top:2px}
+.tv-prem{background:#1b2a8f;border:4px solid #141414;color:#fff;padding:10px 14px}
+.tv-prem small{display:block;font-size:13px;font-weight:700;letter-spacing:3px;color:#ffe600}
+.tv-prem .big{font-size:clamp(34px,11vw,52px);line-height:1.05;overflow-wrap:anywhere}
+.tv-prem p{margin:4px 0 0;font-size:clamp(15px,4vw,18px)}.tv-prem p b{color:#ffe600}
+.tv-list{border:4px solid #141414;background:#fff}
+.tv-row{display:flex;gap:10px;padding:7px 10px;border-bottom:2px solid #141414;font-size:clamp(14px,3.8vw,16px)}
+.tv-row:last-child{border-bottom:0}.tv-row:nth-child(even){background:#fff7b8}
+.tv-row .tm{font-size:clamp(14px,4vw,17px);min-width:52px;color:#d4001c;flex:none}
+.tv-info{display:flex;gap:10px;flex-wrap:wrap}
+.tv-info>div{border:4px solid #141414;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.tv-where{flex:1 1 220px;background:#ffe600}.tv-reply{flex:1 1 150px;background:#141414;color:#fff}
+.tv-lab{font-size:13px;letter-spacing:2px;font-weight:700}.tv-where .tv-lab{color:#d4001c;font-family:'Russo One',sans-serif}.tv-reply .tv-lab{color:#ffe600}
+.tv-val{font-size:clamp(16px,4.6vw,20px);font-weight:700;overflow-wrap:anywhere}
+.tv-tag{text-align:center;font-family:'Marck Script',cursive;font-size:clamp(22px,6.5vw,30px);color:#d4001c;transform:rotate(-2deg)}
+
+/* ---------- окно XP ---------- */
+.win{border:3px solid #0a3fb3;border-radius:9px 9px 0 0;background:#ece9d8;box-shadow:6px 8px 0 rgba(0,0,0,.28);overflow:hidden}
+.title{height:32px;background:linear-gradient(180deg,#3d95ff 0%,#0a5bdc 45%,#0a4fc8 100%);display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 10px;color:#fff;font-weight:700;font-size:14px;gap:8px}
+.title .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ctl{display:flex;gap:3px;flex:none}.ctl i{width:22px;height:22px;background:#2a6be8;border:1px solid #fff;border-radius:3px;display:block}.ctl i:last-child{background:#e2461f}
 .menu{display:flex;gap:14px;padding:3px 10px;border-bottom:1px solid #aca899;font-size:13px}
 .body{padding:12px}
-.hello{display:flex;gap:12px;align-items:center;background:#fff;border:2px inset #9a9a9a;padding:10px 12px;margin-bottom:10px;line-height:1.35}
-.hello svg{flex:none}
-.hello b{color:#0033cc}
-fieldset{border:1px solid #aca899;border-radius:3px;margin:0 0 10px;padding:8px 10px 10px;box-shadow:inset 1px 1px 0 #fff}
-legend{color:#0046d5;padding:0 4px;font-size:14px}
+.hello{display:flex;gap:12px;align-items:center;background:#fff;border:2px inset #9a9a9a;padding:10px 12px;margin-bottom:10px}
+.hello svg{flex:none}.hello b{color:#0033cc}
+fieldset{border:1px solid #aca899;border-radius:3px;margin:0 0 10px;padding:8px 10px 10px;min-width:0;box-shadow:inset 1px 1px 0 #fff}
+legend{color:#0046d5;padding:0 4px}
 label.row{display:block;margin:6px 0 2px}
-input[type=text],input[type=number],select,textarea{width:100%;font:inherit;font-size:15px;padding:5px 6px;border:2px inset #9a9a9a;background:#fff;color:#000;border-radius:0}
-textarea{min-height:70px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:2px solid #2a6be8;outline-offset:0}
-.opt{display:flex;align-items:center;gap:8px;min-height:32px;cursor:pointer}
-.opt input{width:18px;height:18px;flex:none;accent-color:#2a6be8}
-.btns{display:flex;gap:10px;justify-content:flex-end;margin-top:4px}
-.btn{min-width:110px;min-height:34px;font:inherit;font-size:15px;color:#000;background:linear-gradient(180deg,#fff,#e4e1d0);border:2px solid #003c74;border-radius:4px;cursor:pointer;padding:4px 12px}
+input[type=text],input[type=number]{width:100%;font:inherit;font-size:16px;padding:7px 6px;border:2px inset #9a9a9a;background:#fff;color:#000;border-radius:0;min-height:40px}
+input:focus,button:focus-visible{outline:2px solid #2a6be8;outline-offset:1px}
+input:disabled{background:#f1efe2;color:#777}
+.opt{display:flex;align-items:center;gap:10px;min-height:40px;cursor:pointer}
+.opt input{width:22px;height:22px;flex:none;accent-color:#2a6be8}
+.btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.btn{min-width:104px;min-height:42px;font:inherit;font-size:16px;color:#000;background:linear-gradient(180deg,#fff,#e4e1d0);border:2px solid #003c74;border-radius:4px;cursor:pointer;padding:4px 12px}
 .btn.def{border-color:#2a6be8;box-shadow:inset 0 0 0 1px #8fb7ff;font-weight:700}
-.btn:disabled{color:#6b6b6b;border-color:#b5b2a2;cursor:default}
-.status{display:flex;justify-content:space-between;border-top:1px solid #aca899;padding:3px 10px;font-size:12px;color:#333}
+.btn:disabled{color:#6b6b6b;border-color:#b5b2a2;cursor:default;box-shadow:none}
+.status{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #aca899;padding:3px 10px;font-size:12px;color:#333}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------- чат ---------- */
+.log{height:min(300px,46vh);overflow-y:auto;background:#fff;border:2px inset #9a9a9a;padding:8px 10px;font-size:15px;line-height:1.4;overflow-wrap:anywhere;-webkit-overflow-scrolling:touch}
+.log .m{margin:0 0 4px}.log .n{color:#c40000}.log .me .n{color:#0033cc}.log .tm{color:#555;font-size:12px}
+.log .empty{color:#666}
+.lock{margin:8px 0 0;padding:8px 10px;background:#fff7b8;border:1px solid #aca899;font-size:14px}
+.lock[hidden]{display:none}
+.linkbtn{font:inherit;color:#0033cc;text-decoration:underline;background:none;border:0;padding:6px 0;cursor:pointer;min-height:36px}
+.chk{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:6px}
+.chk[hidden]{display:none}.chk .grow{flex:1 1 160px;min-width:0}
+.cf{display:flex;gap:8px;margin-top:8px}.cf input{flex:1;min-width:0}
+.sr{position:absolute;left:-9999px}
+
+/* ---------- демотиватор ---------- */
+.demo{background:#000;color:#fff;padding:clamp(18px,7%,40px) clamp(16px,8%,44px) clamp(18px,5%,30px);display:flex;flex-direction:column;align-items:center;gap:12px;font-family:'Times New Roman',Times,serif;box-shadow:6px 8px 0 rgba(0,0,0,.28)}
+.frame{width:100%;border:3px solid #fff;padding:5px}.frame>div{border:2px solid #fff;line-height:0}
+.frame svg{width:100%;height:auto;aspect-ratio:472/392;display:block}
+.demo h2{margin:4px 0 0;font-weight:400;font-size:clamp(34px,11vw,62px);line-height:1;letter-spacing:2px;text-align:center;overflow-wrap:anywhere}
+.demo p{margin:0;font:clamp(15px,4.2vw,19px)/1.45 Arial,Helvetica,sans-serif;text-align:center}
+
+/* ---------- панель задач ---------- */
 .task{position:fixed;left:0;right:0;bottom:0;height:34px;z-index:5;background:linear-gradient(180deg,#2a6be8,#1a4fc0);display:flex;align-items:center;justify-content:space-between}
 .start{height:34px;padding:0 22px 0 16px;background:linear-gradient(180deg,#4cc22b,#2a8a14);border-radius:0 16px 16px 0;color:#fff;font-size:18px;font-weight:700;font-style:italic;display:flex;align-items:center}
 .clock{padding:0 14px;color:#fff;font-size:14px}
+
+/* ---------- диалог ---------- */
 .ov{position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;padding:14px}
 .ov.on{display:flex}
 .dlg{width:100%;max-width:380px;border:3px solid #0a3fb3;border-radius:9px 9px 0 0;background:#ece9d8;box-shadow:6px 8px 0 rgba(0,0,0,.35)}
 .dlg .title{height:28px}
-.dlg .in{display:flex;gap:14px;align-items:center;padding:16px 14px;font-size:16px;line-height:1.35}
+.dlg .in{display:flex;gap:14px;align-items:center;padding:16px 14px;font-size:16px}
 .dlg .bt{padding:0 14px 14px;display:flex;justify-content:center}
+@media (max-width:380px){.menu{display:none}.hello{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
 <div class="hill" aria-hidden="true"></div>
-<div class="cloud" aria-hidden="true" style="left:6%;top:30px;width:120px;height:34px"></div>
-<div class="cloud" aria-hidden="true" style="right:8%;top:90px;width:90px;height:28px"></div>
+<div class="col">
 
-<main class="win">
-<div class="title"><span class="t">Приглашение на новоселье — анкета гостя</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+<!-- ===== ТЕЛЕПРОГРАММА ===== -->
+<section class="tv" aria-label="Телепрограмма вечера">
+<div class="tv-h"><div class="tv-h1"><div class="tv-title ru">ТЕЛЕПРОГРАММА</div><div class="tv-date">22 НОЯБРЯ 2006 · ОДИН ВЕЧЕР · ОДИН КАНАЛ</div></div><div class="tv-age"><b class="ru">16+</b><span>ё маё</span></div></div>
+<div class="tv-prem"><small>ПРЕМЬЕРА СЕЗОНА</small><div class="big ru">НОВОСЕЛЬЕ!</div><p>Эфир в <b>15:00</b> (ну или в 16:00 — как получится). Все гости приглашены, повтора не будет.</p></div>
+<div class="tv-list">
+<div class="tv-row"><span class="tm ru">15:00</span><span><b>«Заселение»</b> — торжественный вход, разуваемся, шлёпки с носками</span></div>
+<div class="tv-row"><span class="tm ru">16:00</span><span><b>«Прописка пройдена»</b> — знакомство с хатой и погоняла для всех</span></div>
+<div class="tv-row"><span class="tm ru">17:00</span><span><b>«Слышь, Башка?»</b> — викторина по цитатам, приз: золотые семки</span></div>
+<div class="tv-row"><span class="tm ru">18:00</span><span><b>«Переговоры на корточках»</b> — чемпионат, судит бабушка</span></div>
+<div class="tv-row"><span class="tm ru">19:00</span><span><b>«Mortal Kombat»</b> — турнир на приставке, потом фотосессия у подъезда</span></div>
+</div>
+<div class="tv-info">
+<div class="tv-where"><span class="tv-lab">ГДЕ СМОТРЕТЬ</span><span class="tv-val" data-cfg="address">[АДРЕС НОВОЙ ХАТЫ]</span><span style="font-size:15px">Форма одежды: спортивки. С собой: семки.</span></div>
+<div class="tv-reply"><span class="tv-lab">ОТВЕТ ДО ЭФИРА</span><span class="tv-val">заполните анкету ниже</span></div>
+</div>
+<div class="tv-tag">Не переключайтесь — будет весело!!!</div>
+</section>
+
+<!-- ===== АНКЕТА (окно XP) ===== -->
+<main class="win" id="anketa" aria-labelledby="at">
+<div class="title"><span class="t" id="at">Приглашение на новоселье — анкета гостя</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
 <div class="menu" aria-hidden="true"><span>Файл</span><span>Правка</span><span>Вид</span><span>Справка</span></div>
 <div class="body">
 <div class="hello">
 <svg aria-hidden="true" viewBox="0 0 48 48" width="44" height="44"><circle cx="24" cy="24" r="22" fill="#2a6be8" stroke="#fff" stroke-width="3"/><text x="24" y="33" text-anchor="middle" font-size="30" font-weight="700" fill="#fff" font-family="Tahoma,Verdana,sans-serif">?</text></svg>
 <div><b>Вы приглашены на новоселье!</b><br>22 ноября 2006 года, в 15:00 (или в 16:00, как получится).<br>Адрес: <b data-cfg="address">[АДРЕС НОВОЙ ХАТЫ]</b></div>
 </div>
-
 <form id="f" novalidate>
 <div class="hp" aria-hidden="true"><label>Не заполняйте <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-
 <fieldset><legend>Данные гостя</legend>
-<label class="row" for="name">Имя, фамилия, погоняло:</label>
+<label class="row" for="name">Имя, фамилия:</label>
 <input id="name" name="name" type="text" required autocomplete="name">
-<label class="row" for="contact">Как с вами связаться (телефон или ник):</label>
-<input id="contact" name="contact" type="text" autocomplete="tel">
 </fieldset>
-
 <fieldset><legend>Придёте на новоселье?</legend>
 <label class="opt"><input type="radio" name="coming" value="да">да</label>
 <label class="opt"><input type="radio" name="coming" value="конечно да">конечно да</label>
 <label class="opt"><input type="radio" name="coming" value="да, но в 16:00">да, но в 16:00</label>
 <label class="opt"><input type="radio" name="coming" value="не смогу">не смогу (неуважительные причины не принимаются)</label>
 <label class="row" for="plus">Сколько человек с вами (кроме вас):</label>
-<input id="plus" name="plus" type="number" min="0" max="5" value="0" inputmode="numeric" style="max-width:100px">
+<input id="plus" name="plus" type="number" min="0" max="5" value="0" inputmode="numeric" style="max-width:110px">
 </fieldset>
-
-<fieldset><legend>Что принесёте с собой</legend>
-<label class="opt"><input type="checkbox" name="bring" value="семки">семки</label>
-<label class="opt"><input type="checkbox" name="bring" value="хорошее настроение">хорошее настроение</label>
-<label class="opt"><input type="checkbox" name="bring" value="шлёпки с носками">шлёпки с носками (обязательно)</label>
-<label class="row" for="hero">Любимый герой:</label>
-<select id="hero" name="hero"><option value="">— выберите —</option><option>Башка</option><option>Ржавый</option><option>бабушка из подъезда</option></select>
-</fieldset>
-
-<fieldset><legend>Пожелания</legend>
-<label class="row" for="note">Аллергии, пожелания, что-то ещё:</label>
-<textarea id="note" name="note"></textarea>
-</fieldset>
-
 <div class="btns"><button class="btn def" id="send" type="submit">Отправить</button><button class="btn" type="reset">Отмена</button></div>
 </form>
 </div>
 <div class="status"><span id="st">Готово</span><span>Маме не показывать!</span></div>
 </main>
+
+<!-- ===== ЧАТ ===== -->
+<section class="win" id="chat" aria-labelledby="ct">
+<div class="title"><span class="t" id="ct">Чат гостей — новоселье</span><span class="ctl" aria-hidden="true"><i></i><i></i><i></i></span></div>
+<div class="body">
+<div class="log" id="log" role="log" aria-live="polite" aria-label="Сообщения чата"><div class="empty">Загружаю сообщения…</div></div>
+<div class="lock" id="lock">Чтобы писать в чат, сначала заполните анкету выше. <button class="linkbtn" id="have" type="button">Уже заполняли анкету?</button>
+<form class="chk" id="chk" hidden><div class="grow"><label class="row" for="chkname">Введите имя из анкеты:</label><input id="chkname" type="text" autocomplete="name"></div><button class="btn" type="submit">Войти</button></form></div>
+<form class="cf" id="cf"><label class="sr" for="cmsg">Сообщение</label><input id="cmsg" type="text" maxlength="300" autocomplete="off" placeholder="Сначала заполните анкету" disabled><button class="btn def" id="csend" type="submit" disabled>Отправить</button></form>
+</div>
+<div class="status"><span id="cst">Подключаюсь…</span><span id="who"></span></div>
+</section>
+
+<!-- ===== ДЕМОТИВАТОР ===== -->
+<section class="demo" aria-label="Демотиватор">
+<div class="frame"><div>
+<svg role="img" aria-label="Многоэтажка с горящими окнами ночью" viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="nt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1030"/><stop offset="1" stop-color="#3b2a6b"/></linearGradient></defs>
+<rect width="320" height="400" fill="url(#nt)"/>
+<circle cx="270" cy="44" r="20" fill="#fff6c8"/>
+<circle cx="40" cy="30" r="1.8" fill="#fff"/><circle cx="90" cy="18" r="1.4" fill="#fff"/><circle cx="150" cy="40" r="1.6" fill="#fff"/><circle cx="210" cy="20" r="1.4" fill="#fff"/><circle cx="300" cy="100" r="1.4" fill="#fff"/>
+<rect x="20" y="44" width="280" height="356" fill="#59616f"/><rect x="20" y="44" width="280" height="8" fill="#3f4652"/>
+<rect x="34" y="58" width="26" height="20" fill="#ffd84a"/><rect x="78" y="58" width="26" height="20" fill="#ffd84a"/><rect x="122" y="58" width="26" height="20" fill="#2a3140"/><rect x="166" y="58" width="26" height="20" fill="#ffd84a"/><rect x="210" y="58" width="26" height="20" fill="#ffd84a"/><rect x="254" y="58" width="26" height="20" fill="#ffd84a"/><rect x="34" y="92" width="26" height="20" fill="#ffd84a"/><rect x="78" y="92" width="26" height="20" fill="#ffd84a"/><rect x="122" y="92" width="26" height="20" fill="#ffd84a"/><rect x="166" y="92" width="26" height="20" fill="#ffd84a"/><rect x="210" y="92" width="26" height="20" fill="#ffd84a"/><rect x="254" y="92" width="26" height="20" fill="#ffd84a"/><rect x="34" y="126" width="26" height="20" fill="#ffd84a"/><rect x="78" y="126" width="26" height="20" fill="#2a3140"/><rect x="122" y="126" width="26" height="20" fill="#ffd84a"/><rect x="166" y="126" width="26" height="20" fill="#ffd84a"/><rect x="210" y="126" width="26" height="20" fill="#2a3140"/><rect x="254" y="126" width="26" height="20" fill="#2a3140"/><rect x="34" y="160" width="26" height="20" fill="#2a3140"/><rect x="78" y="160" width="26" height="20" fill="#ffd84a"/><rect x="122" y="160" width="26" height="20" fill="#2a3140"/><rect x="166" y="160" width="26" height="20" fill="#ffd84a"/><rect x="210" y="160" width="26" height="20" fill="#2a3140"/><rect x="254" y="160" width="26" height="20" fill="#ffd84a"/><rect x="34" y="194" width="26" height="20" fill="#ffd84a"/><rect x="78" y="194" width="26" height="20" fill="#ffd84a"/><rect x="122" y="194" width="26" height="20" fill="#ffd84a"/><rect x="166" y="194" width="26" height="20" fill="#2a3140"/><rect x="210" y="194" width="26" height="20" fill="#ffd84a"/><rect x="254" y="194" width="26" height="20" fill="#2a3140"/><rect x="34" y="228" width="26" height="20" fill="#2a3140"/><rect x="78" y="228" width="26" height="20" fill="#ffd84a"/><rect x="122" y="228" width="26" height="20" fill="#ffd84a"/><rect x="166" y="228" width="26" height="20" fill="#ffd84a"/><rect x="210" y="228" width="26" height="20" fill="#ffd84a"/><rect x="254" y="228" width="26" height="20" fill="#ffd84a"/><rect x="34" y="262" width="26" height="20" fill="#2a3140"/><rect x="78" y="262" width="26" height="20" fill="#ffd84a"/><rect x="122" y="262" width="26" height="20" fill="#ffd84a"/><rect x="166" y="262" width="26" height="20" fill="#2a3140"/><rect x="210" y="262" width="26" height="20" fill="#ffd84a"/><rect x="254" y="262" width="26" height="20" fill="#ffd84a"/><rect x="34" y="296" width="26" height="20" fill="#2a3140"/><rect x="78" y="296" width="26" height="20" fill="#2a3140"/><rect x="122" y="296" width="26" height="20" fill="#ffd84a"/><rect x="166" y="296" width="26" height="20" fill="#2a3140"/><rect x="210" y="296" width="26" height="20" fill="#ffd84a"/><rect x="254" y="296" width="26" height="20" fill="#2a3140"/><rect x="34" y="330" width="26" height="20" fill="#2a3140"/><rect x="78" y="330" width="26" height="20" fill="#ffd84a"/><rect x="122" y="330" width="26" height="20" fill="#2a3140"/><rect x="166" y="330" width="26" height="20" fill="#ffd84a"/><rect x="210" y="330" width="26" height="20" fill="#ffd84a"/><rect x="254" y="330" width="26" height="20" fill="#2a3140"/>
+<rect x="136" y="364" width="48" height="36" fill="#2a3140"/><rect x="0" y="388" width="320" height="12" fill="#1a1f2a"/>
+</svg></div></div>
+<h2>НОВОСЕЛЬЕ</h2>
+<p>22 ноября 2006 года в 15:00 (или в 16:00).<br>Приходи — будет весело. Или не будет.<br>Но семки будут.</p>
+</section>
+
+</div>
 
 <div class="task"><div class="start">пуск</div><div class="clock">15:00</div></div>
 
@@ -106,40 +185,100 @@ input:focus,select:focus,textarea:focus{outline:2px solid #2a6be8;outline-offset
 <script>
 // ===== НАСТРОЙКИ (меняйте здесь) =====
 var CONFIG = {
-  // Адрес веб-приложения Google Apps Script (см. README.md, шаг 3). Пока пусто — «пробный» режим без отправки.
-  endpoint: "https://script.google.com/macros/s/AKfycby3B5b9zBBTLxmHX80uWI7jrYb2OePk4yQjzCM83qKU-4rRD8axhlU5khN0BHQn1KoXHA/exec",
+  endpoint: "https://script.google.com/macros/s/AKfycby3B5b9zBBTLxmHX80uWI7jrYb2OePk4yQjzCM83qKU-4rRD8axhlU5khN0BHQn1KoXHA/exec",           // адрес Google Apps Script (веб-приложение)
   address: "[АДРЕС НОВОЙ ХАТЫ]"
 };
 // =====================================
+var KEY = 'novosele_guest', API = CONFIG.endpoint;
+function $(id){ return document.getElementById(id); }
+function getGuest(){ try { return localStorage.getItem(KEY) || ''; } catch(e){ return ''; } }
+function setGuest(n){ try { localStorage.setItem(KEY, n); } catch(e){} }
 document.querySelectorAll('[data-cfg="address"]').forEach(function(e){ e.textContent = CONFIG.address; });
-var f=document.getElementById('f'), btn=document.getElementById('send'), st=document.getElementById('st');
-var ov=document.getElementById('ov'), dt=document.getElementById('dt'), dm=document.getElementById('dm'), di=document.getElementById('di');
-var ICON={
+
+/* ---- диалоги ---- */
+var ICON = {
   ok:'<circle cx="24" cy="24" r="22" fill="#2a6be8" stroke="#fff" stroke-width="3"/><path d="M13 25l8 8 15-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>',
   err:'<circle cx="24" cy="24" r="22" fill="#e2461f" stroke="#fff" stroke-width="3"/><path d="M15 15l18 18M33 15L15 33" stroke="#fff" stroke-width="5" stroke-linecap="round"/>'
 };
-function dlg(kind,title,text){ dt.textContent=title; dm.textContent=text; di.innerHTML=ICON[kind]; ov.classList.add('on'); document.getElementById('ok').focus(); }
-document.getElementById('ok').onclick=function(){ ov.classList.remove('on'); };
-f.addEventListener('submit',function(ev){
+function dlg(kind, title, text){ $('dt').textContent = title; $('dm').textContent = text; $('di').innerHTML = ICON[kind]; $('ov').classList.add('on'); $('ok').focus(); }
+$('ok').onclick = function(){ $('ov').classList.remove('on'); };
+
+/* ---- анкета ---- */
+var f = $('f'), btn = $('send'), st = $('st');
+f.addEventListener('submit', function(ev){
   ev.preventDefault();
-  var d=new FormData(f);
-  if(d.get('website')) return;                       // ловушка для спам-ботов
-  if(!String(d.get('name')||'').trim()){ dlg('err','Ошибка','Напишите, как вас зовут!'); return; }
-  if(!d.get('coming')){ dlg('err','Ошибка','Ответьте, придёте ли вы на новоселье!'); return; }
-  var body=new URLSearchParams();
-  body.append('name',d.get('name').trim());
-  body.append('coming',d.get('coming'));
-  body.append('plus',d.get('plus')||'0');
-  body.append('bring',d.getAll('bring').join(', '));
-  body.append('hero',d.get('hero')||'');
-  body.append('contact',d.get('contact')||'');
-  body.append('note',d.get('note')||'');
-  btn.disabled=true; st.textContent='Отправка…';
-  if(!CONFIG.endpoint){ setTimeout(function(){ dlg('err','Пробный режим','Адрес таблицы ещё не подключён, данные никуда не ушли.'); btn.disabled=false; st.textContent='Готово'; },400); return; }
-  fetch(CONFIG.endpoint,{method:'POST',mode:'no-cors',body:body})
-    .then(function(){ dlg('ok','Анкета принята','Анкета принята! Ё маё, ждём вас 22 ноября!!!'); f.reset(); btn.disabled=false; st.textContent='Готово'; })
-    .catch(function(){ dlg('err','Ошибка','Не отправилось. Попробуйте ещё раз или напишите напрямую.'); btn.disabled=false; st.textContent='Готово'; });
+  var d = new FormData(f);
+  if (d.get('website')) return;                         // ловушка для спам-ботов
+  var name = String(d.get('name') || '').trim();
+  if (!name) { dlg('err', 'Ошибка', 'Напишите имя и фамилию!'); return; }
+  if (!d.get('coming')) { dlg('err', 'Ошибка', 'Ответьте, придёте ли вы на новоселье!'); return; }
+  var body = new URLSearchParams();
+  body.append('name', name); body.append('coming', d.get('coming')); body.append('plus', d.get('plus') || '0');
+  btn.disabled = true; st.textContent = 'Отправка…';
+  fetch(API, { method: 'POST', mode: 'no-cors', body: body })
+    .then(function(){
+      setGuest(name); updateChatLock();
+      dlg('ok', 'Анкета принята', 'Анкета принята! Теперь вам открыт чат гостей ниже. Ё маё, ждём 22 ноября!!!');
+      f.reset(); btn.disabled = false; st.textContent = 'Готово';
+    })
+    .catch(function(){ dlg('err', 'Ошибка', 'Не отправилось. Попробуйте ещё раз.'); btn.disabled = false; st.textContent = 'Готово'; });
 });
+
+/* ---- чат ---- */
+var log = $('log'), cmsg = $('cmsg'), csend = $('csend'), cst = $('cst'), lastSig = '', local = [];
+function hm(t){ var d = new Date(t); return ('0'+d.getHours()).slice(-2) + ':' + ('0'+d.getMinutes()).slice(-2); }
+function render(list){
+  var sig = JSON.stringify(list); if (sig === lastSig) return; lastSig = sig;
+  var near = log.scrollHeight - log.scrollTop - log.clientHeight < 60, me = getGuest().toLowerCase();
+  log.textContent = '';
+  if (!list.length) { var e = document.createElement('div'); e.className = 'empty'; e.textContent = 'Пока никто ничего не написал. Будьте первым!'; log.appendChild(e); return; }
+  list.forEach(function(m){
+    var p = document.createElement('div'); p.className = 'm' + (m.n.toLowerCase() === me ? ' me' : '');
+    var b = document.createElement('b'); b.className = 'n'; b.textContent = m.n;
+    var t = document.createElement('span'); t.className = 'tm'; t.textContent = ' (' + hm(m.t) + '): ';
+    p.appendChild(b); p.appendChild(t); p.appendChild(document.createTextNode(m.m)); log.appendChild(p);
+  });
+  if (near) log.scrollTop = log.scrollHeight;
+}
+function load(){
+  fetch(API + '?action=chat&_=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){ local = d.messages || []; render(local); cst.textContent = 'Чат обновляется автоматически'; })
+    .catch(function(){ cst.textContent = 'Нет связи с чатом, пробую ещё…'; });
+}
+function updateChatLock(){
+  var g = getGuest(), ok = !!g;
+  cmsg.disabled = !ok; csend.disabled = !ok;
+  cmsg.placeholder = ok ? 'Напишите сообщение…' : 'Сначала заполните анкету';
+  $('lock').hidden = ok; $('who').textContent = ok ? 'Вы: ' + g : '';
+}
+$('cf').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var g = getGuest(), text = cmsg.value.trim();
+  if (!g || !text) return;
+  var body = new URLSearchParams(); body.append('action', 'chat'); body.append('name', g); body.append('text', text);
+  csend.disabled = true; cmsg.value = '';
+  local = local.concat([{ t: Date.now(), n: g, m: text }]); render(local);
+  fetch(API, { method: 'POST', mode: 'no-cors', body: body })
+    .then(function(){ setTimeout(load, 1500); })
+    .catch(function(){ cst.textContent = 'Сообщение не ушло, попробуйте ещё раз'; })
+    .then(function(){ csend.disabled = false; });
+});
+$('have').onclick = function(){ var c = $('chk'); c.hidden = !c.hidden; if (!c.hidden) $('chkname').focus(); };
+$('chk').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var n = $('chkname').value.trim(); if (!n) return;
+  fetch(API + '?action=check&name=' + encodeURIComponent(n) + '&_=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d.ok) { setGuest(n); updateChatLock(); $('chk').hidden = true; }
+      else dlg('err', 'Не найдено', 'Такого имени нет среди заполнивших анкету. Заполните анкету выше.');
+    })
+    .catch(function(){ dlg('err', 'Ошибка', 'Не удалось проверить имя, попробуйте ещё раз.'); });
+});
+updateChatLock(); load();
+setInterval(function(){ if (!document.hidden) load(); }, 6000);
+document.addEventListener('visibilitychange', function(){ if (!document.hidden) load(); });
 </script>
 </body>
 </html>
