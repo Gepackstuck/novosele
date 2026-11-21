@@ -104,6 +104,7 @@ input:disabled{background:#f1efe2;color:#777}
 .ov.on{display:flex}
 .dlg{width:100%;max-width:380px;border:3px solid #0a3fb3;border-radius:9px 9px 0 0;background:#ece9d8;box-shadow:6px 8px 0 rgba(0,0,0,.35)}
 .dlg .title{height:28px}
+#dm{white-space:pre-line}
 .dlg .in{display:flex;gap:14px;align-items:center;padding:16px 14px;font-size:16px}
 .dlg .bt{padding:0 14px 14px;display:flex;justify-content:center}
 @media (max-width:380px){.menu{display:none}.hello{flex-direction:column;align-items:flex-start}}
@@ -256,7 +257,7 @@ f.addEventListener('submit', function(ev){
         addLocal(name, note);
         postNote(nb, name, 0);
       }
-      dlg('ok', 'Анкета принята', 'Анкета принята! Теперь вам открыт чат гостей ниже. Ё маё, ждём 22 ноября!!!', goChat);
+      dlg('ok', 'Анкета принята', 'Анкета принята!\nТеперь вам открыт чат гостей ниже.\nЁ маё, ждём 22 ноября!!!', goChat);
       f.reset(); btn.disabled = false; btn.textContent = 'Отправить';
     })
     .catch(function(){ dlg('err', 'Ошибка', 'Не отправилось. Попробуйте ещё раз.'); btn.disabled = false; btn.textContent = 'Отправить'; });
